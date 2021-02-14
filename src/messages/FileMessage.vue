@@ -1,7 +1,14 @@
 <template>
-  <div class='sc-message--file' :style="messageColors">
-    <div class='sc-message--file-icon'>
-      <a :href="data.file.url ? data.file.url : '#'"><img v-if="data.file.type" :src="data.file.type.includes('image') ? data.file.url : getNonImageFileIcon(data.file.type)" :class="{ 'sc-image': true, 'sc-file-icon': !data.file.type.includes('image') }"></a>
+  <div class="sc-message--file" :style="messageColors">
+    <div class="sc-message--file-icon">
+      <a :href="data.file.url ? data.file.url : '#'"
+        ><img
+          v-if="data.file.type"
+          :src="
+            data.file.type.includes('image') ? data.file.url : getNonImageFileIcon(data.file.type)
+          "
+          :class="{'sc-image': true, 'sc-file-icon': !data.file.type.includes('image')}"
+      /></a>
     </div>
     <div class="sc-message--file-name" :style="messageColors">
       <a :href="data.file.url ? data.file.url : '#'" target="_blank">{{ data.file.name || '' }}</a>
@@ -30,8 +37,8 @@ export default {
     }
   },
   methods: {
-    getNonImageFileIcon (contentType) {
-      let fileExtension = mime.extension(contentType);
+    getNonImageFileIcon(contentType) {
+      let fileExtension = mime.extension(contentType)
       try {
         switch (fileExtension) {
           case 'docx':
@@ -43,11 +50,10 @@ export default {
           default:
             break
         }
-        return require('vue-beautiful-chat/src/assets/file_icons/' + fileExtension + '.svg')
+        return require('../assets/file_icons/' + fileExtension + '.svg')
       } catch (e) {
-        return require('vue-beautiful-chat/src/assets/file_icons/file.svg')
+        return require('../assets/file_icons/file.svg')
       }
-
     }
   }
 }
