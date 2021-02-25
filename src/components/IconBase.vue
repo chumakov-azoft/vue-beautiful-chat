@@ -7,7 +7,7 @@
     :aria-labelledby="iconName"
     role="presentation"
   >
-    <title :id="iconName" lang="en">{{ iconName }}</title>
+    <title :id="iconName">{{ iconName }}</title>
     <g :fill="iconColor">
       <slot />
     </g>

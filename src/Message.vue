@@ -1,5 +1,5 @@
 <template>
-  <div :id="message.id" class="sc-message">
+  <div :id="message.id" class="sc-message" @contextmenu.prevent="$emit('context', {event: $event, message})">
     <div
       class="sc-message--content"
       :class="{
@@ -42,7 +42,7 @@
           </slot>
         </template>
       </TextMessage>
-      <EmojiMessage v-else-if="message.type === 'emoji'" :data="message.data" />
+      <EmojiMessage v-else-if="message.type === 'emoji'" :data="message.data"/>
       <FileMessage
         v-else-if="message.type === 'file'"
         :data="message.data"
@@ -154,10 +154,10 @@ export default {
 
 .sc-message--avatar {
   background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center;
-  min-width: 30px;
-  min-height: 30px;
+  background-size: cover;
+  background-position: 50%;
+  min-width: 50px;
+  min-height: 50px;
   border-radius: 50%;
   align-self: center;
   margin-right: 15px;

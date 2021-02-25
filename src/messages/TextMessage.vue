@@ -1,7 +1,7 @@
 <template>
   <div class="sc-message--text" :style="messageColors">
-    <template>
-      <div class="sc-message--toolbox" :style="{background: messageColors.backgroundColor}">
+    <!--<template>
+      <div class="sc-message&#45;&#45;toolbox" :style="{background: messageColors.backgroundColor}">
         <button v-if="showEdition && me && message.id" :disabled="isEditing" @click="edit">
           <IconBase :color="isEditing ? 'black' : messageColors.color" width="10" icon-name="edit">
             <IconEdit />
@@ -14,7 +14,7 @@
         </button>
         <slot name="text-message-toolbox" :message="message" :me="me"> </slot>
       </div>
-    </template>
+    </template>-->
     <slot :message="message" :messageText="messageText" :messageColors="messageColors" :me="me">
       <p class="sc-message--text-content" v-html="messageText"></p>
       <p v-if="message.data.meta" class="sc-message--meta" :style="{color: messageColors.color}">
@@ -24,7 +24,6 @@
         <IconBase width="10" icon-name="edited">
           <IconEdit />
         </IconBase>
-        edited
       </p>
     </slot>
   </div>
@@ -81,7 +80,7 @@ export default {
   methods: {
     edit() {
       store.setState('editMessage', this.message)
-    }
+    },
   }
 }
 </script>

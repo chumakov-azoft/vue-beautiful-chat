@@ -32,6 +32,7 @@
       @onType="$emit('onType')"
       @edit="$emit('edit', $event)"
       @remove="$emit('remove', $event)"
+      @context="$emit('context', $event)"
     >
       <template v-slot:header>
         <slot name="header"> </slot>
@@ -243,6 +244,9 @@ export default {
     openAndFocus() {
       this.open()
       this.$root.$emit('focusUserInput')
+    },
+    editMessage(message) {
+      store.setState('editMessage', message)
     }
   }
 }

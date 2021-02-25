@@ -24,6 +24,7 @@
       @onType="handleOnType"
       @edit="editMessage"
       @remove="removeMessage"
+      @context="contextMessage"
     >
       <template v-slot:text-message-toolbox="scopedProps">
         <button
@@ -206,6 +207,9 @@ export default {
         m.data.text = 'This message has been removed'
       }
     },
+    contextMessage({event, message}) {
+      console.log(message)
+    },
     like(id) {
       const m = this.messageList.findIndex((m) => m.id === id)
       var msg = this.messageList[m]
@@ -218,8 +222,8 @@ export default {
 
 <style>
 body {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
 }
 
 * {
@@ -242,8 +246,6 @@ body {
 .demo-test-area--text {
   box-sizing: border-box;
   width: 100%;
-  margin: 0px;
-  padding: 0px;
   resize: none;
   font-family: Avenir Next, Helvetica Neue, Helvetica, sans-serif;
   background: #fafbfc;
